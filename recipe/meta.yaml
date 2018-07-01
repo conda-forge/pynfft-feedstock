@@ -10,26 +10,26 @@ source:
   md5: d2457a3f43839a8acce3295c60d5e692
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
 
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
     - pip
-    - numpy 1.8.*   # [not (win and (py35 or py36))]
-    - numpy 1.9.*   # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy         # [not (win and (py35 or py36))]
+    - numpy         # [win and py35]
+    - numpy         # [win and py36]
     - nfft >=3.2,<3.3
-    - gcc
     - cython
   run:
     - python
-    - numpy >=1.8   # [not (win and (py35 or py36))]
-    - numpy >=1.9   # [win and py35]
-    - numpy >=1.11  # [win and py36]
+    - {{ pin_compatible('numpy') }}    # [not (win and (py35 or py36))]
+    - {{ pin_compatible('numpy') }}    # [win and py35]
+    - {{ pin_compatible('numpy') }}   # [win and py36]
     - nfft >=3.2,<3.3
-    - libgcc
 
 test:
   imports:
