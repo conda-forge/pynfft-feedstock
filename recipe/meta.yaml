@@ -20,7 +20,7 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - cython
+    - cython <3
     - python
     - pip
     - numpy
